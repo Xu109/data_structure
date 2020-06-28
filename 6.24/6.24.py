@@ -34,7 +34,6 @@ def threeSum(nums: List[int]) -> List:
 
 # 最接近的三数之和
 
-
 def threeSumClossest(nums: List[int], target: int) -> int:
     nums.sort()
     min = abs(nums[0] + nums[1] + nums[2] - target)
