@@ -135,7 +135,7 @@ def remove2(nums: List[int]) -> int:
 def is_circle(head):
     curr = head
     prev = head
-    while curr and prev.next:
+    while curr and curr.next:
         curr = curr.next.next
         if prev == curr:
             return True
@@ -154,5 +154,5 @@ node4 = Node(4)
 node1.next = node2
 node2.next = node3
 node3.next = node4
-node4.next = None
+node4.next = node2
 print(is_circle(node1))

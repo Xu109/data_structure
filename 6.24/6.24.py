@@ -31,7 +31,6 @@ def threeSum(nums: List[int]) -> List:
                 left += 1
                 right -= 1
     return res
-
 # 最接近的三数之和
 
 def threeSumClossest(nums: List[int], target: int) -> int:
