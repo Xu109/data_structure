@@ -151,13 +151,64 @@ class BinarySearchTree:
         else:
             return self.inorder(self.root)
 
+    def pre_order_stack(self, node):  # 前序遍历的非递归(栈)实现
+        stack = []
+        while node or len(stack) > 0:
+            while node:
+                print(node.value)
+                stack.append(node)
+                node = node.left
+            if len(stack) > 0:
+                node = stack.pop()
+                node = node.right
+
+
+    def in_order_stack(self, node):  # 中序遍历的非递归(栈)实现
+        stack = []
+        while node or len(stack) > 0:
+            while node:
+                stack.append(node)
+                node = node.left
+            if len(stack) > 0:
+                node = stack.pop()
+                print(node.value)
+                node = node.right
+
+
+    def post_order_stack(self, node):
+        stack1 = []
+        stack2 = []
+        stack1.append(node)
+        while stack1:
+            node = stack1.pop()
+            if node.left:
+                stack1.append(node.left)
+            if node.right:
+                stack1.append(node.right)
+            stack2.append(node)
+        while stack2:
+            print(stack2.pop().value, end=' ')
+
+    def level_order(self, root: Node):
+        from queue import Queue
+        queue = Queue()
+        queue.put(root)
+        while not queue.empty():
+            node = queue.get()
+            print(node.value, end=' ')
+            if node.left:
+                queue.put(node.left)
+            if node.right:
+                queue.put(node.right)
+
 
 t = BinarySearchTree().insert(8, 3, 6, 1, 10, 14, 13, 4, 7)
 print(t)
+t.level_order(t.root)
 # print(" ".join(repr(i.value) for i in t.traversal(method='pre')))
 # print(" ".join(repr(i.value) for i in t.traversal(method='post')))
 # print(" ".join(repr(i.value) for i in t.traversal(method='in')))
-t.search(6)
+# t.search(6)
 # t.remove(13)
 # print(" ".join(repr(i.value) for i in t.traversal()))
 
