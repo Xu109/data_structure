@@ -51,7 +51,6 @@ def swapPairs(head: ListNode) -> ListNode:
         pre.next = fast
         slow.next = fast.next
         fast.next = slow
-        fast.next = slow
         pre = pre.next.next
     return dummy.next
 
