@@ -24,7 +24,7 @@ class ListNode:
         return f"{self.val}->{self.next}"
 
 
-def swapPairs(head: ListNode) -> ListNode:
+def swapPairs1(head: ListNode) -> ListNode:
     if head is None:
         return head
     dummy = ListNode(0)
@@ -38,6 +38,21 @@ def swapPairs(head: ListNode) -> ListNode:
         node2.next = node1
         cur = node1
         head = node1.next
+    return dummy.next
+
+
+def swapPairs(head: ListNode) -> ListNode:
+    dummy = ListNode(0)
+    dummy.next = head
+    pre = dummy
+    while pre.next and pre.next.next:
+        slow = pre.next
+        fast = pre.next.next
+        pre.next = fast
+        slow.next = fast.next
+        fast.next = slow
+        fast.next = slow
+        pre = pre.next.next
     return dummy.next
 
 
