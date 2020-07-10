@@ -10,11 +10,6 @@ class heap:
     def __init__(self):
         self.data_list = []
 
-    def print_heap(self):
-        for i in range(len(self.data_list)):
-            print(self.data_list[i], end=" ")
-
-
     def get_parent_index(self, index):
         if index == 0 or index > len(self.data_list) - 1:
             return None
@@ -54,6 +49,7 @@ class heap:
                 break
             self.swap(index, maxvalue_index)
             index = maxvalue_index
+
 
     def pop(self):
         remove_data = self.data_list[0]

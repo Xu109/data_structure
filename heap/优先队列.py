@@ -41,11 +41,9 @@ class PriorityQueue:
         index = 0
         while True:
             maxvalue_index = index  #
-            if 2 * index + \
-                    1 <= total_index and self.array[2 * index + 1] > self.array[maxvalue_index]:
+            if 2 * index + 1 <= total_index and self.array[2 * index + 1] > self.array[maxvalue_index]:
                 maxvalue_index = 2 * index + 1  # 如果左孩子结点大于当前最大节点,最大值索引等于左孩子索引
-            if 2 * index + \
-                    2 <= total_index and self.array[2 * index + 2] > self.array[maxvalue_index]:
+            if 2 * index + 2 <= total_index and self.array[2 * index + 2] > self.array[maxvalue_index]:
                 maxvalue_index = 2 * index + 2  # 如果右孩子结点大于当前最大结点,最大值索引等于右孩子结点
             if maxvalue_index == index:  # 如果
                 break
