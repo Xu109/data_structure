@@ -26,7 +26,7 @@ def selectionSort(l: List[int]):
             if l[j] < l[minindex]:
                 minindex = j
         l[i], l[minindex] = l[minindex], l[i]
-        print("第{}轮排序结果:".format(i), end=" ")
+        print("第{}轮排序结果:".format(i + 1), end=" ")
         print(l)
     return l
 

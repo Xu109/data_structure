@@ -5,417 +5,95 @@ Github:  https://github.com/Xu109
 Copyright (c) 2020, Mr.Xu Group All Rights Reserved.
 """
 
-# class TrieNode:
-#     def __init__(self):
-#         self.data = {}
-#         self.is_word = False
-#
-# class Trie:
-#     def __init__(self):
-#         self.root = TrieNode()
-#
-#     def insert(self, word):
-#         node = self.root
-#         for char in word:
-#             child = node.data.get(char)
-#             if child is None:
-#                 node.data[char] = TrieNode()
-#             node = node.data[char]
-#         node.is_word = True
-#
-#     def search(self, word):
-#         node = self.root
-#         for char in word:
-#             node = node.data.get(char)
-#             if node is None:
-#                 return False
-#         return node.is_word
-#
-#     def startsWith(self, prefix):
-#         node = self.root
-#         for char in prefix:
-#             node = node.data.get(char)
-#             if not node:
-#                 return False
-#         return True
+
+from typing import List
 
 
-# class TrieNode:
-#     def __init__(self):
-#         self.data = {}
-#         self.is_word = False
-#
-# class Trie:
-#     def __init__(self):
-#         self.root = TrieNode()
-#
-#     def insert(self, word):
-#         node = self.root
-#         for char in word:
-#             child = node.data.get(char)
-#             if not child:
-#                 node.data[char] = TrieNode()
-#             node = node.data[char]
-#         node.is_word = True
-#
-#     def search(self, word):
-#         node = self.root
-#         for char in word:
-#             node = node.data.get(char)
-#             if not node:
-#                 return False
-#         return node.is_word
-#
-#     def startsWith(self, prefix):
-#         node = self.root
-#         for char in prefix:
-#             node = node.data.get(char)
-#             if not node:
-#                 return False
-#         return True
+class TrieNode:
+    def __init__(self):
+        self.data = {}
+        self.is_word = False
 
 
-# class TrieNode:
-#     def __init__(self):
-#         self.data = {}
-#         self.is_word = False
-#
-# class Trie:
-#     def __init__(self):
-#         self.root = TrieNode()
-#
-#     def insert(self, word):
-#         node = self.root
-#         for char in word:
-#             child = node.data.get(char)
-#             if not child:
-#                 node.data[char] = TrieNode()
-#             node = node.data[char]
-#         node.is_word = True
-#
-#     def search(self, word):
-#         node = self.root
-#         for char in word:
-#             node = node.data.get(char)
-#             if not node:
-#                 return False
-#         return node.is_word
-#
-#     def startsWith(self, prefix):
-#         node = self.root
-#         for char in prefix:
-#             node = node.data.get(char)
-#             if not node:
-#                 return False
-#         return True
-#
-# if __name__ == '__main__':
-#     t = Trie()
-#     t.insert('test')
-#     print(t.search('test'))
-#     print(t.search('tests'))
-#     print(t.startsWith('te'))
-#     print(t.startsWith('tei'))
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            child = node.data.get(char)
+            if child is None:
+                node.data[char] = TrieNode()
+            node = node.data[char]
+        node.is_word = True
+
+    def search(self, word):
+        node = self.root
+        for char in word:
+            node = node.data.get(char)
+            if node is None:
+                return False
+        return node.is_word
+
+    def startsWith(self, prefix):
+        node = self.root
+        for char in prefix:
+            node = node.data[char].get(char)
+            if node is None:
+                return False
+        return True
 
 
-# class Node:
-#     def __init__(self, value, parent):
-#         self.value = value
-#         self.parent = parent
-#         self.left = None
-#         self.right = None
-#
-#
-# def preorder(node):
-#     if node is None:
-#         return
-#     print(node.value, end=" ")
-#     preorder(node.left)
-#     preorder(node.right)
-#     return node
-#
-# def inorder(node):
-#     if node is None:
-#         return
-#     inorder(node.left)
-#     print(node.value, end=" ")
-#     inorder(node.right)
-#     return node
-#
-# def postorder(node):
-#     if node is None:
-#         return
-#     postorder(node.left)
-#     postorder(node.right)
-#     print(node.value, end=" ")
-#     return node
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+    # def __repr__(self):
+    #     return f"{self.data}:({self.left},{self.right})"
 
 
-# class Node:
-#     def __init__(self, value, parent):
-#         self.value = value
-#         self.parent = parent
-#         self.left = None
-#         self.right = None
-#
-# def pre_order_stack(node):
-#     stack = []
-#     while node or len(stack) > 0:
-#         while node:
-#             print(node.value)
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             node = node.right
-#
-# def in_order_stack(node):
-#     stack = []
-#     while node and len(stack) > 0:
-#         while node:
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             print(node.value)
-#             node = node.right
-#
-# def post_order_stack(node):
-#     stack1 = []
-#     stack2 = []
-#     stack1.append(node)
-#     while stack1:
-#         node = stack1.pop()
-#         if node.left:
-#             stack1.append(node.left)
-#         if node.right:
-#             stack1.append(node.right)
-#         stack2.append(node)
-#     while stack2:
-#         print(stack2.pop().value, end=" ")
+def pre_order(node: Node):
+    if node is None:
+        return
+    print(node.data, end=" ")
+    pre_order(node.left)
+    pre_order(node.right)
+    return node
 
 
-
-# class Node:
-#     def __init__(self, value, parent):
-#         self.value = value
-#         self.parent = parent
-#         self.left = None
-#         self.right = None
-#
-# def pre_order_stack(node):
-#     stack = []
-#     while node or len(stack) > 0:
-#         while node:
-#             print(node.value)
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             node = node.right
-#
-# def in_order_stack(node):
-#     stack = []
-#     while node and len(stack) > 0:
-#         while node:
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             print(node.value)
-#             node = node.right
-#
-# def post_order_stack(node):
-#     stack1 = []
-#     stack2 = []
-#     stack1.append(node)
-#     while stack1:
-#         node = stack1.pop()
-#         if node.left:
-#             stack1.append(node.left)
-#         if node.right:
-#             stack1.append(node.right)
-#         stack2.append(node)
-#     while stack2:
-#         print(stack2.pop().value, end=" ")
+def in_order_stack(node: Node):
+    stack = []
+    while node or len(stack) > 0:
+        while node:
+            stack.append(node)
+            node = node.left
+        if len(stack) > 0:
+            node = stack.pop()
+            print(node.data, end=" ")
+            node = node.right
 
 
-
-# class Node:
-#     def __init__(self, value, parent):
-#         self.value = value
-#         self.parent = parent
-#         self.left = None
-#         self.right = None
-#
-# def pre_order_stack(node):
-#     stack = []
-#     while node or len(stack) > 0:
-#         while node:
-#             print(node.value)
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             node = node.right
-#
-# def in_order_stack(node):
-#     stack = []
-#     while node and len(stack) > 0:
-#         while node:
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             print(node.value)
-#             node = node.right
-#
-# def post_order_stack(node):
-#     stack1 = []
-#     stack2 = []
-#     stack1.append(node)
-#     while stack1:
-#         node = stack1.pop()
-#         if node.left:
-#             stack1.append(node.left)
-#         if node.right:
-#             stack1.append(node.right)
-#         stack2.append(node)
-#     while stack2:
-#         print(stack2.pop().value, end=" ")
-
-
-
-# class Node:
-#     def __init__(self, value, parent):
-#         self.value = value
-#         self.parent = parent
-#         self.left = None
-#         self.right = None
-#
-# def pre_order_stack(node):
-#     stack = []
-#     while node or len(stack) > 0:
-#         while node:
-#             print(node.value)
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             node = node.right
-#
-# def in_order_stack(node):
-#     stack = []
-#     while node and len(stack) > 0:
-#         while node:
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             print(node.value)
-#             node = node.right
-#
-# def post_order_stack(node):
-#     stack1 = []
-#     stack2 = []
-#     stack1.append(node)
-#     while stack1:
-#         node = stack1.pop()
-#         if node.left:
-#             stack1.append(node.left)
-#         if node.right:
-#             stack1.append(node.right)
-#         stack2.append(node)
-#     while stack2:
-#         print(stack2.pop().value, end=" ")
-
-
-# def pre_order_stack(node):
-#     stack = []
-#     while node or len(stack) > 0:
-#         while node:
-#             print(node.value)
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             node = node.right
-#
-# def in_order_stack(node):
-#     stack = []
-#     while node or len(stack) > 0:
-#         while node:
-#             stack.append(node)
-#             node = node.left
-#         if len(stack) > 0:
-#             node = stack.pop()
-#             print(node.value)
-#             node = node.right
-#
-# def post_order_stack(node):
-#     stack1 = []
-#     stack2 = []
-#     stack1.append(node)
-#     while stack1:
-#         node = stack1.pop()
-#         if node.left:
-#             stack1.append(node.left)
-#         if node.right:
-#             stack1.append(node.right)
-#         stack2.append(node)
-#     while stack2:
-#         print(stack2.pop().value, end=" ")
-
-
-# def level_order(root: Node):
-#     from queue import Queue
-#     queue = Queue()
-#     queue.put(root)
-#     while not queue.empty():
-#         node = queue.get()
-#         print(node.value, end=" ")
-#         if node.left:
-#             queue.put(node.left)
-#         if node.right:
-#             queue.put(node.right)
-
-
-# def level_order(root: Node):
-#     from queue import Queue
-#     queue = Queue()
-#     queue.put(root)
-#     while not queue.empty():
-#         node = queue.get()
-#         print(node.value, end=" ")
-#         if node.left:
-#             queue.put(node.left)
-#         if node.right:
-#             queue.put(node.right)
-
-
-# def level_order(root: Node):
-#     from queue import Queue
-#     queue = Queue()
-#     queue.put(root)
-#     while not queue.empty():
-#         node = queue.get()
-#         print(node.value, end=" ")
-#         if node.left:
-#             queue.put(node.left)
-#         if node.right:
-#             queue.put(node.right)
-
-
-# def level_order(root: Node):
-#     from queue import Queue
-#     queue = Queue()
-#     queue.put(root)
-#     while not queue.empty():
-#         node = queue.get()
-#         print(node.value, end=" ")
-#         if node.left:
-#             queue.put(node.left)
-#         if node.right:
-#             queue.put(node.right)
-
-
+def one_times(num: int):
+    count = 0
+    while num != 0:
+        num = num & (num - 1)
+        count += 1
+    return count
+def remove_val(nums: List, val: int):
+    slow = 0
+    fast = 0
+    while fast < len(nums):
+        if nums[fast] != val:
+            nums[slow] = nums[fast]
+            slow += 1
+            fast += 1
+        else:
+            fast += 1
+    return slow
+if __name__ == '__main__':
+    print(one_times(8))
+    a = [1, 2, 3, 3, 5, 6, 7]
+    b = remove_val(a, 3)
+    print(a[:b])

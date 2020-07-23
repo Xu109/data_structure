@@ -38,7 +38,7 @@ class Solution:
 
 # 方案二
 # TODO
-    def removeDuplicated(self, nums: List[int]) -> int:
+    def removeDuplicated1(self, nums: List[int]) -> int:
         slow = 0
         fast = 1
         while fast < len(nums):

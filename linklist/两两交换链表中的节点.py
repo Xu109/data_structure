@@ -25,7 +25,7 @@ class ListNode:
 
 
 def swapPairs1(head: ListNode) -> ListNode:
-    if head is None:
+    if not head:
         return head
     dummy = ListNode(0)
     dummy.next = head
